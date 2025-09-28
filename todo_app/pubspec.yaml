@@ -47,6 +47,7 @@ dependencies:
 dev_dependencies:
   build_runner:
   hive_generator:
+  flutter_launcher_icons: 
 
   flutter_test:
     sdk: flutter
@@ -62,6 +63,14 @@ dev_dependencies:
 # following page: https://dart.dev/tools/pub/pubspec
 
 # The following section is specific to Flutter packages.
+flutter_launcher_icons:
+  android: "launcher_icon"
+  ios: true
+  image_path: "assets/icon/note.png"
+  min_sdk_android: 24 # android min sdk min:16, default 21
+  web:
+    generate: true
+    image_path: "assets/icon/note.png"
 flutter:
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
