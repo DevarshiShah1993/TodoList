@@ -38,23 +38,23 @@ https://jsonplaceholder.typicode.com
 
 ## 2) Architecture & Design Decisions
 
-State management: Cubit (flutter_bloc)
+### State management: Cubit (flutter_bloc)
 Lightweight and explicit. Each user action maps to a Cubit method (load, addTask, toggleTask, deleteTask, setSearch, sync).
 
-Dependency Injection: GetIt
+### Dependency Injection: GetIt
 Central place to wire dependencies (API client, repository, Hive box, cubits).
 Decision: open Hive boxes before registering them in GetIt so consumers get ready-to-use instances.
 
-Data cache: Hive
+### Data cache: Hive
 Fast key-value store for persisting tasks and pending operations for offline use.
 
-Repository pattern
+### Repository pattern
 The UI talks to a repository that hides Dio calls and JSON mapping.
 
-API target: JSONPlaceholder
+### API target: JSONPlaceholder
 Chosen as a public mock API. Writes are accepted but not persisted long-term; local cache is the source of truth for UX.
 
-Web-first execution
+### Web-first execution
 Because mobile traffic is blocked by Cloudflare in this context, we validate API flows on web. Mobile still runs with offline cache.
 
 ## 3) BLoC/Cubit Implementation (Brief)
@@ -89,7 +89,7 @@ onConnectivityChanged(isOnline): update flag; if back online → sync().
 
 sync(): drains the pending queue against the API; updates Hive and state.
 
-UI
+### UI
 
 BlocBuilder/BlocListener rebuilds views and shows snackbars.
 
@@ -121,7 +121,7 @@ Search is client-side and case-insensitive on the task title.
 
 ## 6) Challenges & How They Were Solved
 
-403 (Cloudflare) on device
+### 403 (Cloudflare) on device
 
 What happened: API calls from Android/iOS were blocked.
 
@@ -129,7 +129,7 @@ What we did: Ran and verified API flows on web (flutter run -d chrome).
 
 If needed later: Use a small proxy/relay or a different test API; or keep an offline-first mode for device testing.
 
-Filter → Edit → List resets
+### Filter → Edit → List resets
 
 What happened: After editing a task while a filter was active, the list reverted to the full set.
 
