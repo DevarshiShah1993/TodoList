@@ -29,12 +29,12 @@ flutter run -d chrome
 # (Optional) Run on device/emulator; network calls will be blocked by Cloudflare here
 flutter run -d android
 flutter run -d ios
-
-Environment
+```
+### Environment
 
 No secret keys or .env needed. All endpoints point to:
 https://jsonplaceholder.typicode.com
-```
+
 
 ## 2) Architecture & Design Decisions
 
