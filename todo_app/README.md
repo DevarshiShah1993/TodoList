@@ -1,16 +1,38 @@
-# todo_app
+# Todo App (Flutter • Cubit • GetIt • Hive)
 
-A new Flutter project.
+A simple task list app that talks to the JSONPlaceholder API.  
+It uses **Cubit** for state management, **GetIt** for dependency injection, and **Hive** for local caching and offline support.
 
-## Getting Started
+---
 
-This project is a starting point for a Flutter application.
+## 1) Setup
 
-A few resources to get you started if this is your first Flutter project:
+### Prerequisites
+- Flutter SDK installed (stable channel)
+- Dart included with Flutter
+- A device/emulator or a web browser
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+> **Note:** JSONPlaceholder calls from Android/iOS are blocked by Cloudflare in this environment.  
+> Please run on **web** for API testing.
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+### Install & Run
+```bash
+# 1) Get packages
+flutter pub get
+
+# 2) Generate/ensure Hive adapters if codegen is used
+# dart run build_runner build --delete-conflicting-outputs
+
+# 3) Run on web (recommended due to Cloudflare 403 on devices)
+flutter run -d chrome
+
+# (Optional) Run on device/emulator; network calls will be blocked by Cloudflare here
+flutter run -d android
+flutter run -d ios
+
+Environment
+
+No secret keys or .env needed. All endpoints point to:
+https://jsonplaceholder.typicode.com
+
+
