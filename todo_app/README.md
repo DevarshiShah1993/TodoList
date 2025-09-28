@@ -34,6 +34,7 @@ Environment
 
 No secret keys or .env needed. All endpoints point to:
 https://jsonplaceholder.typicode.com
+```
 
 ## 2) Architecture & Design Decisions
 
